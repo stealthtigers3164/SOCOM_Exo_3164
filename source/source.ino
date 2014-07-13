@@ -25,6 +25,8 @@
 //Non-PWM
 #define SoftwareDisableSwitch 22
 
+//The following functions are used in void setup() and void loop().
+
 
 
 void setup() {
@@ -54,4 +56,5 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly: 
+  
 }
