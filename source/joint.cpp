@@ -2,7 +2,8 @@
 #include "Joint.h"
 #include "Servo.h"
 
-Morse::Morse(int pwmPin)
+Joint::Joint(short pwmPin)
 {
 	
 }
+

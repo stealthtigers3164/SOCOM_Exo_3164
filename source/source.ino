@@ -44,14 +44,10 @@ void setup() {
   pinMode(Potrk, INPUT);
   pinMode(Potra, INPUT);
   
-  pinMode(Victorlh, OUTPUT);
-  pinMode(Victorlk, OUTPUT);
-  pinMode(Victorla, OUTPUT);
-  pinMode(Victorrh, OUTPUT);
-  pinMode(Victorrk, OUTPUT);
-  pinMode(Victorra, OUTPUT);
+  //victor pinmodes are defined inside the class.
+  Joint Motorlh(Victorlh);
   
-  pinMode(SoftwareDisableSwitch, INPUT);
+  
 }
 
 void loop() {

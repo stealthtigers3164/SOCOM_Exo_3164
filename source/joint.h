@@ -6,7 +6,8 @@
 class Joint
 {
 	public:
-		Joint(int pwmPin)
+		Joint(short pwmPin)
+
 }
 
 #endif
