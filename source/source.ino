@@ -1,5 +1,19 @@
-//Written by Brendan Gregos and Dominic Kynkor for Team 3164's CTEF SOCOM Project TALOS Submission
-//Analog Ports
+//Written by Brendan Gregos and Dominic Kynkor for Team 3164's US SOCOM Project TALOS Prototype
+//Hardware: Code is designed to run on the Arduino Mega 2560 r3. The motor controllers used are VEX Victor 888's.
+//Style Notice: All indents will be two spaces (Two spaces are inserted when TAB is pressed in the Ardunio IDE).
+
+/*Compile Notices:
+- Program is designed to be compiled in the Arduino IDE. Version in use is 1.0.5-r2.
+- If you receive 'A8' was not declared in this scope, goto Tools > Board > Arduino Mega 2560.
+*/
+
+
+//Includes
+#include "Arduino.h"
+#include "Joint.h"
+
+
+//Analog Ports -- Naming scheme: l= left, r=right, h=hip, k=knee, a=ankle.
 #define AccelerometerX A0
 #define AccelerometerY A1
 #define AccelerometerZ A2
@@ -23,11 +37,6 @@
 #define Victorra 7
 
 //Non-PWM
-#define SoftwareDisableSwitch 22
-
-//The following functions are used in void setup() and void loop().
-
-
 
 void setup() {
   // put your setup code here, to run once:
