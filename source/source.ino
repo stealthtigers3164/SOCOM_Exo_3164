@@ -8,37 +8,49 @@
 - If you receive "joint.cpp:3:19: fatal error: Joint.h: No such file or directory" goto Sketch > Import Library > Add library... and find Joint.h in the source.
 */
 
+  //Analog Ports -- Naming scheme: l= left, r=right, h=hip, k=knee, a=ankle.
+int AccelerometerX=0;
+int AccelerometerY=1;
+int AccelerometerZ=2;
+int GyroX=3;
+int GyroY=4;
+int GyroZ=5;
+int PotLh=6;//left hip
+int PotLk=7; //left knee
+int PotLa=8; //left ankle
+int PotRh=9; //right hip
+int PotRk=10;
+int PotRa=11;
 
+//Digital Ports
+//PWM
+int VictorLh=2;
+int VictorLk=3;
+int VictorLa=4;
+int VictorRh=5;
+int VictorRk=6;
+int VictorRa=7;
+  
 //Includes
 #include "Arduino.h"
 #include "Joint.h"
 #include <Servo.h>
 
 
-//Analog Ports -- Naming scheme: l= left, r=right, h=hip, k=knee, a=ankle.
-#define AccelerometerX A0
-#define AccelerometerY A1
-#define AccelerometerZ A2
-#define GyroX A3
-#define GyroY A4
-#define GyroZ A5
-#define Potlh A6 //left hip
-#define Potlk A7 //left knee
-#define Potla A8 //left ankle
-#define Potrh A9 //right hip
-#define Potrk A10
-#define Potra A11
 
-//Digital Ports
-//PWM
-#define Victorlh 2
-#define Victorlk 3
-#define Victorla 4
-#define Victorrh 5
-#define Victorrk 6
-#define Victorra 7
 
 //Non-PWM
+  Joint MotorLh;
+  Joint MotorLk;
+  Joint MotorLa;
+  Joint MotorRh;
+  Joint MotorRk;
+  Joint MotorRa;
+
+void attachPins(){
+  MotorLh.attachPin(2);
+  
+}
 
 void setup() {
   // put your setup code here, to run once:
@@ -48,25 +60,19 @@ void setup() {
   pinMode(GyroX, INPUT);
   pinMode(GyroY, INPUT);
   pinMode(GyroZ, INPUT);
-  pinMode(Potlh, INPUT);
-  pinMode(Potlk, INPUT);
-  pinMode(Potla, INPUT);
-  pinMode(Potrh, INPUT);
-  pinMode(Potrk, INPUT); 
-  pinMode(Potra, INPUT);
-  
-  //victor pinmodes are defined inside the class.
-  Joint Motorlh(Victorlh, Potlh);
-  Joint Motorlk(Victorlk, Potlk);
-  Joint Motorla(Victorla, Potla);
-  Joint Motorrh(Victorrh, Potrh);
-  Joint Motorrk(Victorrk, Potrk);
-  Joint Motorra(Victorra, Potra);
-  
+  pinMode(PotLh, INPUT);
+  pinMode(PotLk, INPUT);
+  pinMode(PotLa, INPUT);
+  pinMode(PotRh, INPUT);
+  pinMode(PotRk, INPUT); 
+  pinMode(PotRa, INPUT);
+  Serial.begin(9600);
+  //delay(5000);
+  attachPins();
   
 }
-
+  
 void loop() {
   // put your main code here, to run repeatedly: 
-  Motorlh.UpdateSpeed();
+  MotorLh.writePin(179);
 }
