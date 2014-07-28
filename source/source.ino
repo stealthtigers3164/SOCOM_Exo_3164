@@ -48,7 +48,12 @@ int VictorRa=7;
   Joint MotorRa;
 
 void attachPins(){
-  MotorLh.attachPin(2);
+  MotorLh.attachPin(VictorLh);
+  MotorLk.attachPin(VictorLk);
+  MotorLa.attachPin(VictorLa);
+  MotorRh.attachPin(VictorRh);
+  MotorRk.attachPin(VictorRk);
+  MotorRa.attachPin(VictorRa);
   
 }
 
@@ -75,4 +80,5 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly: 
   MotorLh.writePin(179);
+  MotorLk.writePin(6);
 }
