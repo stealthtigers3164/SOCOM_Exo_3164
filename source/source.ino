@@ -78,5 +78,5 @@ void setup() {
   
 void loop() {
   // put your main code here, to run repeatedly: 
-  MotorLh.doPID(20);
+  MotorLh.writePin(MotorLh.doPID(map(analogRead(PotLh),0,1023,0,179), map(analogRead(0),0,1023,0,179)));
 }
