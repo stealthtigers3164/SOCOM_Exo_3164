@@ -26,9 +26,23 @@
 class Joint{
   protected:
   Servo victor;
+  double error;
+  double setpoint;
+  double output;
+  double integral;
+  double derivative;
+  double preError;
+  unsigned long period;
+  unsigned long oldperiod;
+  
+  int Kp=2;
+  int Ki=4;
+  int Kd=5;
 
   public:
+  Joint();
   void attachPin(int pin);
   void writePin(int value);
+  int doPID(int input);
 };
 #endif

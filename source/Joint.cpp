@@ -1,18 +1,24 @@
 #include "Joint.h"
 
-/*Joint::Joint(int _pwmPin, int _potPin)
+Joint::Joint()
   {
-
-    this->_potPin=_potPin;
-    this->_pwmPin=_pwmPin;
-    int potValue; //used to read the value from the potentiometer
-    Serial.println("Constructor");
-    //this->victor.attach(2);
+  error=0;
+  setpoint=50;
+  output=0;
+  integral=0;
+  derivative=0;
+  preError=0;
+  period=0;
+  oldperiod=0;
+  
+  Kp=2;
+  Ki=1;
+  Kd=5;
     
     
   }
 
-void Joint::UpdateSpeed()
+/*void Joint::UpdateSpeed()
   {
     this->victor.attach(2);
     Serial.println("I promise I am working");
@@ -37,7 +43,30 @@ void Joint::UpdateSpeed()
   {
     this->victor.write(value);
   }
- 
+  
+  int Joint::doPID(int input){ //3-4ms
+    period = millis()-oldperiod;
+    oldperiod=millis();
+   // Serial.println(period);
+    // calculate the difference between
+   // the desired value and the actual value
+  error = setpoint - input; 
+   // track error over time, scaled to the timer interval
+  integral = integral + (error * period);
+  Serial.println(integral*Ki);
+   // determine the amount of change from the last time checked
+  derivative = (error - preError) / period; 
+   // calculate how much to drive the output in order to get to the 
+   // desired setpoint. 
+  output = (Kp * error) + (Ki * integral) + (Kd * derivative);
+   // remember the error for the next time around.
+  preError = error;  
+  
+  if (output>179) output=179;
+  else if (output<0) output=0;
+  
+  return (int)output;
+  }
   
 
   

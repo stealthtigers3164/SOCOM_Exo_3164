@@ -54,7 +54,6 @@ void attachPins(){
   MotorRh.attachPin(VictorRh);
   MotorRk.attachPin(VictorRk);
   MotorRa.attachPin(VictorRa);
-  
 }
 
 void setup() {
@@ -79,6 +78,5 @@ void setup() {
   
 void loop() {
   // put your main code here, to run repeatedly: 
-  MotorLh.writePin(179);
-  MotorLk.writePin(6);
+  MotorLh.doPID(20);
 }
