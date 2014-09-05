@@ -13,7 +13,7 @@ Joint::Joint()
   
   Kp=.4;
   Ki=.0005;
-  Kd=2;
+  Kd=5;
     
     
   }

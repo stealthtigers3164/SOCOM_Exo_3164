@@ -78,5 +78,45 @@ void setup() {
   
 void loop() {
   // put your main code here, to run repeatedly: 
-  MotorLh.writePin(MotorLh.doPID(map(analogRead(PotLh),0,1023,0,179), map(analogRead(0),0,1023,0,179)));
+//  MotorLh.writePin(MotorLh.doPID(map(analogRead(PotLh),0,1023,0,179), map(analogRead(0),0,1023,0,179)));
+  MotorRa.writePin(MotorRa.doPID(map(analogRead(PotRa),0,1023,0,179), map(analogRead(0),0,1023,0,179)));
+
+}
+
+String inString = ""; //holds input from Serial Port
+int pots[6];
+int potnumber=0;
+bool ReadNetworkVars(){ 
+  //Serial.println("Reading Network Variables.");
+   //the slave continuously sends values.
+   while(Serial.available()>0){ //continue processing until no more serial data is left in buffer
+     Serial.print("Recieved ");
+     int inChar = (char)Serial.read();
+     Serial.println(inChar);
+     if(inChar == 'i'){ //format is i(integer)numbers\n Example: i53\n = 53
+       Serial.println("Reading integer...");
+     }else if((char)inChar=='n'){ //reads the stream into a string until newline is seen
+         //don't send a newline into the output
+         pots[potnumber]=inString.toInt();
+          potnumber++;
+          inString = "";
+       }else{      
+           inString += (char)inChar; //adds current character to string
+           Serial.println(inString);
+       }
+     }
+   if(potnumber>=6){potnumber=0;}
+   if(!pots[0]==0){
+     for(int i=0; i<6; i++){
+       Serial.println(pots[i]);
+     }
+   }
+  return 0; 
+}
+
+bool SendNetworkVar(int toSend){
+   Serial.print("i");
+   Serial.print(toSend);
+   Serial.print("n");
+   return 0;
 }
