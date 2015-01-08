@@ -80,7 +80,11 @@ void loop() {
   // put your main code here, to run repeatedly: 
 //  MotorLh.writePin(MotorLh.doPID(map(analogRead(PotLh),0,1023,0,179), map(analogRead(0),0,1023,0,179)));
   MotorRa.writePin(MotorRa.doPID(map(analogRead(PotRa),0,1023,0,179), map(analogRead(0),0,1023,0,179)));
-
+  MotorRk.writePin(MotorRk.doPID(map(analogRead(PotRk),0,1023,0,179), map(analogRead(1),0,1023,0,179)));
+  MotorRh.writePin(MotorRh.doPID(map(analogRead(PotRh),0,1023,0,179), map(analogRead(2),0,1023,0,179)));
+  MotorLa.writePin(MotorLa.doPID(map(analogRead(PotLa),0,1023,0,179), map(analogRead(3),0,1023,0,179)));
+  MotorLk.writePin(MotorLk.doPID(map(analogRead(PotLk),0,1023,0,179), map(analogRead(4),0,1023,0,179)));
+  MotorLh.writePin(MotorLh.doPID(map(analogRead(PotLh),0,1023,0,179), map(analogRead(5),0,1023,0,179)));
 }
 
 String inString = ""; //holds input from Serial Port
