@@ -1,10 +1,10 @@
 //Written by Brendan Gregos and Dominic Kynkor for Team 3164's US SOCOM Project TALOS Prototype
-//Hardware: Code is designed to run on the Arduino Mega 2560 r3. The motor controllers used are VEX Victor 888's.
+//Hardware: Code is designed to run on the Arduino Due. The motor controllers used are VEX Victor 888's.
 //Style Notice: All indents will be two spaces (Two spaces are inserted when TAB is pressed in the Ardunio IDE).
 
 /*Compile Notices:
 - Program is designed to be compiled in the Arduino IDE. Version in use is 1.0.5-r2.
-- If you receive "'A8' was not declared in this scope", goto Tools > Board > Arduino Mega 2560.
+- If you receive "'A8' was not declared in this scope", goto Tools > Board > Arduino Due. You must be running Arduino IDE 1.5+ for this.
 - If you receive "joint.cpp:3:19: fatal error: Joint.h: No such file or directory" goto Sketch > Import Library > Add library... and find Joint.h in the source.
 */
 
@@ -87,7 +87,10 @@ void loop() {
   MotorLh.writePin(MotorLh.doPID(map(analogRead(PotLh),0,1023,0,179), map(analogRead(5),0,1023,0,179)));
 }
 
-String inString = ""; //holds input from Serial Port
+
+///The following code is no longer used but kept around. Instead of using a master-slave hardware config, voltage converters were used instead, making this code uneeded.
+
+/*String inString = ""; //holds input from Serial Port
 int pots[6];
 int potnumber=0;
 bool ReadNetworkVars(){ 
@@ -124,3 +127,4 @@ bool SendNetworkVar(int toSend){
    Serial.print("n");
    return 0;
 }
+*/
